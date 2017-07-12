@@ -46,29 +46,13 @@ export default {
         }
     },
     mounted(){
+        console.log(this.$store.state.chartOne.title);
+        console.log(this.$store.state.chartOne.data);
         // chartOne
         var chartOne = echarts.init(document.getElementById("chartOne"));
-        // chartOne.setOption({
-        //     backgroundColor: '#2c343c',
-        //     series : [
-        //         {
-        //             name: '访问来源',
-        //             type: 'pie',
-        //             radius: '55%',
-        //             // roseType: 'angle',
-        //             data:[
-        //                 {value:235, name:'视频广告'},
-        //                 {value:274, name:'联盟广告'},
-        //                 {value:310, name:'邮件营销'},
-        //                 {value:335, name:'直接访问'},
-        //                 {value:400, name:'搜索引擎'}
-        //             ]
-        //         }
-        //     ]
-        // })
         chartOne.setOption({
             title : {
-                text: 'chartOne',
+                text: this.$store.state.chartOne.title,
                 x: 'center'
             },
             tooltip: {
@@ -86,13 +70,7 @@ export default {
                     type: 'pie',
                     radius : '55%',
                     center: ['50%', '60%'],
-                    data:[
-                        {value:335, name:'直接访问'},
-                        {value:310, name:'邮件营销'},
-                        {value:234, name:'联盟广告'},
-                        {value:135, name:'视频广告'},
-                        {value:1548, name:'搜索引擎'}
-                    ],
+                    data:this.$store.state.chartOne.data,
                     itemStyle: {
                         emphasis: {
                             shadowBlur: 10,
@@ -110,7 +88,7 @@ export default {
             backgroundColor: '#2c343c',
 
             title: {
-                text: 'chartTwo',
+                text: this.$store.state.chartTwo.title,
                 left: 'center',
                 top: 20,
                 textStyle: {
@@ -137,13 +115,7 @@ export default {
                     type:'pie',
                     radius : '55%',
                     center: ['50%', '50%'],
-                    data:[
-                        {value:335, name:'直接访问'},
-                        {value:310, name:'邮件营销'},
-                        {value:274, name:'联盟广告'},
-                        {value:235, name:'视频广告'},
-                        {value:400, name:'搜索引擎'}
-                    ].sort(function (a, b) { return a.value - b.value; }),
+                    data:this.$store.state.chartTwo.data.sort(function (a, b) { return a.value - b.value; }),
                     roseType: 'radius',
                     label: {
                         normal: {
